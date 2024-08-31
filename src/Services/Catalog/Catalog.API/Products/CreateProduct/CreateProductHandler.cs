@@ -7,10 +7,13 @@ public record CreateProductCommand(string Name, List<string> Category, string De
 
 public record CreateProductResult(Guid Id);
 
-internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+internal class CreateProductCommandHandler (IDocumentSession session, ILogger<CreateProductCommandHandler> logger) 
+    : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
+        logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
+
         var product = new Product
         {
             Id = Guid.NewGuid(),
@@ -21,7 +24,8 @@ internal class CreateProductCommandHandler : ICommandHandler<CreateProductComman
             Price = command.Price
         };
 
-        //here will be the persistence logic
+        session.Store(product);
+        session.SaveChanges();
 
         return new CreateProductResult(product.Id);
     }
