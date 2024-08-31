@@ -25,7 +25,7 @@ internal class CreateProductCommandHandler (IDocumentSession session, ILogger<Cr
         };
 
         session.Store(product);
-        session.SaveChanges();
+        await session.SaveChangesAsync(cancellationToken);
 
         return new CreateProductResult(product.Id);
     }

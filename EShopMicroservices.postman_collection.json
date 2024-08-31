@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "aaf9cb20-3732-430f-bd3c-66d1d398c3d3",
+		"name": "EShopMicroservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37999794"
+	},
+	"item": [
+		{
+			"name": "Catalog.API",
+			"item": [
+				{
+					"name": "CreateProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"4K Ultra HD TV\",\r\n    \"Category\": [\r\n        \"Electronics\",\r\n        \"Home Entertainment\"\r\n    ],\r\n    \"Description\": \"A 55-inch 4K Ultra HD television with HDR support.\",\r\n    \"ImageFile\": \"4k-ultra-hd-tv.jpg\",\r\n    \"Price\": 499.99\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/d556334f-6262-4113-b178-a6bec93e9813",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"d556334f-6262-4113-b178-a6bec93e9813"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductsByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/category/Electronics",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"Electronics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"d556334f-6262-4113-b178-a6bec93e9813\",\r\n    \"Name\": \"Sample Product not so Sample\",\r\n    \"Category\": [\r\n        \"Electronics\",\r\n        \"Gadgets\"\r\n    ],\r\n    \"Description\": \"This is a sample product description.\",\r\n    \"ImageFile\": \"sample-product.jpg\",\r\n    \"Price\": 99.99\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products/",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/d556334f-6262-4113-b178-a6bec93e9813",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"d556334f-6262-4113-b178-a6bec93e9813"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "catalog_url",
+			"value": "https://localhost:5050",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "d556334f-6262-4113-b178-a6bec93e9813",
+			"type": "string"
+		},
+		{
+			"key": "category",
+			"value": "Electronics",
+			"type": "string"
+		}
+	]
+}
