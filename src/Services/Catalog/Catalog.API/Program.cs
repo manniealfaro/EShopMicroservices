@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
     config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
 });
 
